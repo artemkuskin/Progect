@@ -26,7 +26,7 @@ const basket = () => {
                         '<div class="title-busket" id="' +
                         "0" +
                         id +
-                        '"><p class="name-text-basket">' +
+                        '"><button class="delete-button" id="' + id + '">-</button><p class="name-text-basket">' +
                         name.innerText +
                         "</p>";
                     sad +=
@@ -67,7 +67,7 @@ document.addEventListener("click", function(e) {
             main.style.display = "none";
             sum.innerText = +sum.innerText + +itogSum.innerText * resultValueInput.value;
             sad +=
-                '<div class="title-busket" id="title-busket"><p class="qw" id="' +
+                '<div class="title-busket" id="' + '0' + id + '"><button class="delete-button2" id="' + id + '">-</button><p class="qw" id="' +
                 "000" +
                 id +
                 '">' +
@@ -85,3 +85,20 @@ document.addEventListener("click", function(e) {
         obj = {};
     }
 });
+
+document.addEventListener('click', function(e) {
+    id = e.target.id
+    if (e.target.classList.contains('delete-button')) {
+        let price = document.getElementById(`${'v' + id}`)
+        let number = document.getElementById(`${'00' + id}`)
+        let result = document.querySelector('.all-price')
+        console.log(number);
+        result.innerText = result.innerText - (price.innerText * number.innerText)
+        console.log(id);
+        document.getElementById(`${"0" + id}`).remove()
+    } else if (e.target.classList.contains('delete-button2')) {
+        let number = document.getElementById(`${'0000' + id}`)
+        let result = document.querySelector('.all-price')
+        document.getElementById(`${"0" + id}`).remove()
+    }
+})

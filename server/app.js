@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const menu = require('../1/data.json');
+const menu = require('../server/data.json');
 const app = express()
 app.use(cors());
 
